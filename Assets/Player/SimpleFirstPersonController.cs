@@ -14,14 +14,14 @@ public class SimpleFirstPersonController : MonoBehaviour
 
     private Vector3 moveDirection = Vector3.zero;
     private Vector3 velocity; // This will store the velocity for gravity and jumping
-    private Camera camera;
+    private Camera playerCamera;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked; // Lock the cursor to the center of the screen
         Cursor.visible = false; // Hide the cursor
-        camera = GetComponentInChildren<Camera>();
+        playerCamera = GetComponentInChildren<Camera>();
     }
 
     void Update()
@@ -39,7 +39,7 @@ public class SimpleFirstPersonController : MonoBehaviour
 
         // Apply the rotations
         transform.rotation = Quaternion.Euler(0, rotationY, 0); // Rotate the player body on the Y-axis
-        camera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0); // Rotate the camera on the X-axis
+        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0); // Rotate the camera on the X-axis
 
         // Movement Input (WASD)
         float moveDirectionX = Input.GetAxis("Horizontal"); // A/D (left/right)
