@@ -142,13 +142,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2.5
+  m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.8, z: 0}
 --- !u!1 &375197381
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,6 +402,10 @@ PrefabInstance:
     - target: {fileID: 654806602786870019, guid: 070095bfedf139b42979536db6a4f68e, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 861010202963860477, guid: 070095bfedf139b42979536db6a4f68e, type: 3}
+      propertyPath: jumpForce
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2219701580291531365, guid: 070095bfedf139b42979536db6a4f68e, type: 3}
       propertyPath: m_LocalScale.x
@@ -663,9 +667,9 @@ Transform:
   m_GameObject: {fileID: 2045712638}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5, y: 4, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 2.5, y: 0, z: -1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

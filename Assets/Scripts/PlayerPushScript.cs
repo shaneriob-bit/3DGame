@@ -1,19 +1,27 @@
 using UnityEngine;
 
+/*
+ * Useful information on Raycasting: https://gamedevbeginner.com/raycasts-in-unity-made-easy/
+ * Use RaycastHit.normal to find the face of the cube that the raycast hits.
+ */
+
 public class PlayerPushScript : MonoBehaviour
 {
     public GameObject pushCastOrigin;
 
-    // Update is called once per frame
+    Ray ray;
+    RaycastHit hitData;
+
+    float rayDistance = 4.0f;
+
     void FixedUpdate()
     {
-        Vector3 fwd = pushCastOrigin.transform.TransformDirection(Vector3.forward);
-        RaycastHit hit;
+        ray = new Ray(pushCastOrigin.transform.position, pushCastOrigin.transform.forward);
 
-        if(Physics.Raycast(pushCastOrigin.transform.position, fwd, out hit, 0.1f))
+        if(Physics.Raycast(ray, out hitData, rayDistance))
         {
-            Debug.DrawLine(pushCastOrigin.transform.position, hit.point);
-            print("Something is in front of the object!");
+            Debug.DrawRay(ray.origin, ray.direction * rayDistance);
+            //Debug.Log("Hit: " + hitData.normal);
         }
     }
 }
