@@ -2,26 +2,32 @@ using UnityEngine;
 
 /*
  * Useful information on Raycasting: https://gamedevbeginner.com/raycasts-in-unity-made-easy/
- * Use RaycastHit.normal to find the face of the cube that the raycast hits.
  */
 
 public class PlayerPushScript : MonoBehaviour
 {
     public GameObject pushCastOrigin;
 
-    Ray ray;
-    RaycastHit hitData;
-
-    float rayDistance = 4.0f;
+    float rayDistance = 0.8f;
+    float pushForce = 2.0f;
 
     void FixedUpdate()
     {
-        ray = new Ray(pushCastOrigin.transform.position, pushCastOrigin.transform.forward);
+        Ray ray = new Ray(pushCastOrigin.transform.position, pushCastOrigin.transform.forward);
+        RaycastHit hitData;
 
-        if(Physics.Raycast(ray, out hitData, rayDistance))
+        if (Physics.Raycast(ray, out hitData, rayDistance))
         {
+            GameObject hitObject = hitData.transform.gameObject;
+            Rigidbody hitRigidbody = hitObject.GetComponent<Rigidbody>();
+
+            if (hitRigidbody != null)
+            {
+                hitRigidbody.linearVelocity = (hitData.normal * -1) * pushForce; 
+            }
+
             Debug.DrawRay(ray.origin, ray.direction * rayDistance);
-            //Debug.Log("Hit: " + hitData.normal);
+            Debug.Log("Hit: " + hitData.normal);
         }
     }
 }

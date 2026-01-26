@@ -405,7 +405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 861010202963860477, guid: 070095bfedf139b42979536db6a4f68e, type: 3}
       propertyPath: jumpForce
-      value: 1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 2219701580291531365, guid: 070095bfedf139b42979536db6a4f68e, type: 3}
       propertyPath: m_LocalScale.x
@@ -667,7 +667,7 @@ Transform:
   m_GameObject: {fileID: 2045712638}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5, y: 0, z: -1}
+  m_LocalPosition: {x: 2, y: 0, z: -5}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
