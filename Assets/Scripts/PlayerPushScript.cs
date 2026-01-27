@@ -9,7 +9,7 @@ public class PlayerPushScript : MonoBehaviour
     public GameObject pushCastOrigin;
 
     float rayDistance = 0.8f;
-    float pushForce = 2.0f;
+    public float pushForce = 3.0f;
 
     void FixedUpdate()
     {
