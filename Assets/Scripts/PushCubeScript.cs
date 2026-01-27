@@ -9,7 +9,7 @@ public class PushCubeScript : MonoBehaviour
 
     const float directionResetTime = 0.1f;
 
-    float pushForce = 2.0f;
+    float pushForce = 2.4f;
 
     float timeSinceTouch = 0.0f;
 
