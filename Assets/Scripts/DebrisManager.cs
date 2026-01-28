@@ -4,7 +4,7 @@ using UnityEngine.Rendering;
 public class DebrisManager : MonoBehaviour
 {
     public GameObject debrisPrefab;
-    public bool enabled = true;
+    public bool spawn = true;
     public float squareSize = 8.0f;
     public int debrisListSize = 1000;
     public int maxClusterSize = 16;
@@ -37,9 +37,9 @@ public class DebrisManager : MonoBehaviour
         }
         return activeCount;
     }
-        public void ResetDebris(int index)
+    public void ResetDebris(int index)
     {
-        debrisList[index].transform.position = new Vector3(Random.Range(-squareSize, squareSize), transform.position.y, Random.Range(-squareSize, squareSize));
+        debrisList[index].transform.position = transform.position + (new Vector3(Random.Range(-squareSize, squareSize), transform.position.y, Random.Range(-squareSize, squareSize)));
         debrisList[index].transform.localScale = debrisPrefab.transform.localScale * Random.Range(1.0f, maxScaleMultiplier);
         debrisList[index].GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
         debrisList[index].SetActive(true);
