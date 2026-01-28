@@ -409,8 +409,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debrisPrefab: {fileID: 3845770152004278901, guid: 1453016f2d86dee47b0e54751b9f4883, type: 3}
-  squareSize: 0
-  debrisListSize: 1000
+  squareSize: 8
+  debrisListSize: 512
+  maxClusterSize: 16
+  maxScaleMultiplier: 2
 --- !u!4 &671084577
 Transform:
   m_ObjectHideFlags: 0
