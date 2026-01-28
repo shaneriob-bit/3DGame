@@ -4,6 +4,7 @@ using UnityEngine.Rendering;
 public class DebrisManager : MonoBehaviour
 {
     public GameObject debrisPrefab;
+    public bool enabled = true;
     public float squareSize = 8.0f;
     public int debrisListSize = 1000;
     public int maxClusterSize = 16;
@@ -64,18 +65,21 @@ public class DebrisManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        for(int i = 0; i < debrisList.Count; i++)
+        if(enabled)
         {
-            if(Vector3.Distance(debrisList[i].transform.position, Vector3.zero) > 9999.0f)
+            for(int i = 0; i < debrisList.Count; i++)
             {
-                debrisList[i].SetActive(false);
+                if(Vector3.Distance(debrisList[i].transform.position, Vector3.zero) > 9999.0f)
+                {
+                    debrisList[i].SetActive(false);
+                }
             }
-        }
 
 
-        if(Random.Range(0, 20) == 17)
-        {
-            RainDebris(Random.Range(1, maxClusterSize)); //CreateDebris(Random.Range(1, 30));
+            if(Random.Range(0, 20) == 17)
+            {
+                RainDebris(Random.Range(1, maxClusterSize)); //CreateDebris(Random.Range(1, 30));
+            }
         }
     }
 }
