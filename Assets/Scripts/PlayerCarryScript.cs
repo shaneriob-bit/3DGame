@@ -10,7 +10,7 @@ public class PlayerCarryScript : MonoBehaviour
     private GameObject heldObject;
     private Rigidbody heldObjectRb;
 
-    float moveSpeed = 6.9f;
+    float moveSpeed = 10f;
 
     void Update()
     {
@@ -41,19 +41,19 @@ public class PlayerCarryScript : MonoBehaviour
         {
             return;
         }
-        Transform targetPosition = heldObject.transform;
+        Transform targetPosition = holdPoint.transform;
         if (targetPosition != null)
         {
             // Calculate the direction and normalize it to ensure consistent speed
-            Vector3 direction = (targetPosition.position - transform.position).normalized;
+            Vector3 direction = (targetPosition.position - heldObject.transform.position).normalized;
             
             // Set the velocity
-            rb.velocity = direction * moveSpeed;
+            rb.linearVelocity = direction * moveSpeed;
 
             // Optional: Stop the object when it is close enough to prevent oscillation
-            if (Vector3.Distance(transform.position, targetPosition.position) < 0.1f)
+            if (Vector3.Distance(heldObject.transform.position, targetPosition.position) < 0.2f)
             {
-                rb.velocity = Vector3.zero;
+                rb.linearVelocity = Vector3.zero;
             }
         }
     }
