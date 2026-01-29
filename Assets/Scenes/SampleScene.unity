@@ -424,7 +424,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &375197381
 GameObject:
@@ -762,6 +762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4541204199610529371, guid: 070095bfedf139b42979536db6a4f68e, type: 3}
+    - {fileID: 937031267962766386, guid: 070095bfedf139b42979536db6a4f68e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8744663229482010626, guid: 070095bfedf139b42979536db6a4f68e, type: 3}

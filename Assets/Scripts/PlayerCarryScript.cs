@@ -10,6 +10,8 @@ public class PlayerCarryScript : MonoBehaviour
     private GameObject heldObject;
     private Rigidbody heldObjectRb;
 
+    float moveSpeed = 6.9f;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E)) // Press 'E' to interact
@@ -32,6 +34,30 @@ public class PlayerCarryScript : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        Rigidbody rb = heldObjectRb;
+        if (rb == null)
+        {
+            return;
+        }
+        Transform targetPosition = heldObject.transform;
+        if (targetPosition != null)
+        {
+            // Calculate the direction and normalize it to ensure consistent speed
+            Vector3 direction = (targetPosition.position - transform.position).normalized;
+            
+            // Set the velocity
+            rb.velocity = direction * moveSpeed;
+
+            // Optional: Stop the object when it is close enough to prevent oscillation
+            if (Vector3.Distance(transform.position, targetPosition.position) < 0.1f)
+            {
+                rb.velocity = Vector3.zero;
+            }
+        }
+    }
+
     void PickUpObject(GameObject pickObj)
     {
         if (pickObj.GetComponent<Rigidbody>() != null)
@@ -41,9 +67,12 @@ public class PlayerCarryScript : MonoBehaviour
             heldObjectRb.useGravity = false; // Disable gravity while held
             heldObjectRb.linearDamping = 10; // Increase drag for smoother movement
 
+            
+
             // Parent the object to the hold point
-            heldObject.transform.parent = holdPoint;
-            heldObject.transform.position = holdPoint.transform.position;
+            //heldObject.transform.parent = holdPoint;
+            //heldObject.transform.position = holdPoint.transform.position;
+            //heldObject.transform.rotation = Quaternion.identity;
         }
     }
 
