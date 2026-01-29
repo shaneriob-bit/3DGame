@@ -9,7 +9,10 @@ public class DebrisManager : MonoBehaviour
     public int debrisListSize = 1000;
     public int maxClusterSize = 16;
     public float maxScaleMultiplier = 3.0f;
+    public float clusterFrequency = 1f;
+
     private List<GameObject> debrisList = new List<GameObject>();
+    private float timeSinceCluster = 0.0f;
 
     int usedCount = 0;
 
@@ -65,6 +68,9 @@ public class DebrisManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        timeSinceCluster += Time.deltaTime;
+
+
         if(enabled)
         {
             for(int i = 0; i < debrisList.Count; i++)
@@ -76,9 +82,10 @@ public class DebrisManager : MonoBehaviour
             }
 
 
-            if(Random.Range(0, 20) == 17)
+            if(timeSinceCluster >= clusterFrequency)
             {
                 RainDebris(Random.Range(1, maxClusterSize)); //CreateDebris(Random.Range(1, 30));
+                timeSinceCluster = 0;
             }
         }
     }
