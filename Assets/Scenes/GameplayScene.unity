@@ -750,6 +750,10 @@ PrefabInstance:
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3732730303029963973, guid: 98d04b102b2c38148981cee38356bac0, type: 3}
+      propertyPath: clusterFrequency
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732730303029963973, guid: 98d04b102b2c38148981cee38356bac0, type: 3}
       propertyPath: maxScaleMultiplier
       value: 4
       objectReference: {fileID: 0}

@@ -10,6 +10,7 @@ public class DebrisManager : MonoBehaviour
     public int maxClusterSize = 16;
     public float maxScaleMultiplier = 3.0f;
     public float clusterFrequency = 1f;
+    public float maxDebrisDistance = 100.0f;
 
     private List<GameObject> debrisList = new List<GameObject>();
     private float timeSinceCluster = 0.0f;
@@ -75,7 +76,7 @@ public class DebrisManager : MonoBehaviour
         {
             for(int i = 0; i < debrisList.Count; i++)
             {
-                if(Vector3.Distance(debrisList[i].transform.position, Vector3.zero) > 9999.0f)
+                if(Vector3.Distance(debrisList[i].transform.position, transform.position) > maxDebrisDistance)
                 {
                     debrisList[i].SetActive(false);
                 }

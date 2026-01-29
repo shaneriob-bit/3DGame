@@ -1,10 +1,21 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TitleScreenScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private GameObject PlayButtonObject;
+
     void Start()
     {
-        Physics.gravity = new Vector3(0, -0.5f, 0);   
+        Button button = PlayButtonObject.GetComponent<Button>();
+        button.onClick.AddListener(OnPlayClicked);
+        Physics.gravity = new Vector3(0, -0.5f, 0);
+    }
+
+    void OnPlayClicked()
+    {
+        Physics.gravity = new Vector3(0, -9.81f, 0);
+        SceneManager.LoadScene("GameplayScene");
     }
 }
