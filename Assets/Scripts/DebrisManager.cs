@@ -62,7 +62,7 @@ public class DebrisManager : MonoBehaviour
     }
 
 
-    private void Start()
+    private void Awake()
     {
         CreateDebris(debrisListSize);
     }
@@ -72,7 +72,7 @@ public class DebrisManager : MonoBehaviour
         timeSinceCluster += Time.deltaTime;
 
 
-        if(enabled)
+        if(spawn)
         {
             for(int i = 0; i < debrisList.Count; i++)
             {
