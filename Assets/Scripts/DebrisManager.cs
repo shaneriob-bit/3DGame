@@ -5,10 +5,11 @@ public class DebrisManager : MonoBehaviour
 {
     public GameObject debrisPrefab;
     public bool spawn = true;
-    public float squareSize = 8.0f;
+    public Vector2 squareSize = new Vector2(4.0f, 4.0f);
     public int debrisListSize = 1000;
     public int maxClusterSize = 16;
     public float maxScaleMultiplier = 3.0f;
+    public float minScaleMultiplier = 1.0f;
     public float clusterFrequency = 1f;
     public float maxDebrisDistance = 100.0f;
 
@@ -22,8 +23,9 @@ public class DebrisManager : MonoBehaviour
         for(int i = 0; i < count; i++)
         {
             GameObject clone = Instantiate(debrisPrefab);
+            Vector2 randRectanglePosition = GetRandomPointOnRectangle(squareSize.x, squareSize.y);
             clone.transform.parent = transform;
-            clone.transform.position = new Vector3(Random.Range(-squareSize, squareSize), transform.position.y, Random.Range(-squareSize, squareSize));
+            clone.transform.localPosition = new Vector3(randRectanglePosition.x, transform.position.y, randRectanglePosition.y);
             debrisList.Add(clone);
             clone.SetActive(false);
         }
@@ -43,8 +45,9 @@ public class DebrisManager : MonoBehaviour
     }
     public void ResetDebris(int index)
     {
-        debrisList[index].transform.position = transform.position + (new Vector3(Random.Range(-squareSize, squareSize), transform.position.y, Random.Range(-squareSize, squareSize)));
-        debrisList[index].transform.localScale = debrisPrefab.transform.localScale * Random.Range(1.0f, maxScaleMultiplier);
+        Vector2 randRectanglePosition = GetRandomPointOnRectangle(squareSize.x, squareSize.y);
+        debrisList[index].transform.localPosition = new Vector3(randRectanglePosition.x, transform.position.y, randRectanglePosition.y);
+        debrisList[index].transform.localScale = debrisPrefab.transform.localScale * Random.Range(minScaleMultiplier, maxScaleMultiplier);
         debrisList[index].GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
         debrisList[index].SetActive(true);
     }
@@ -59,6 +62,11 @@ public class DebrisManager : MonoBehaviour
             if (usedCount >= debrisList.Count)
                 usedCount = 0;
         }
+    }
+
+    private Vector2 GetRandomPointOnRectangle(float sizeX, float sizeY)
+    {
+        return new Vector2(Random.Range(-sizeX / 2, sizeX / 2), Random.Range(-sizeY / 2, sizeY / 2));
     }
 
 
