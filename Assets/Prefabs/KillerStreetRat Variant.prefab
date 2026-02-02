@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3647605675915272474
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 32832438972237923, guid: 03597fa8fa7c0024c9c3204dd9898bcd, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 439488377466807536, guid: 03597fa8fa7c0024c9c3204dd9898bcd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.631092
+      objectReference: {fileID: 0}
+    - target: {fileID: 439488377466807536, guid: 03597fa8fa7c0024c9c3204dd9898bcd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.9999981
+      objectReference: {fileID: 0}
+    - target: {fileID: 439488377466807536, guid: 03597fa8fa7c0024c9c3204dd9898bcd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.3495235
+      objectReference: {fileID: 0}
+    - target: {fileID: 439488377466807536, guid: 03597fa8fa7c0024c9c3204dd9898bcd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 439488377466807536, guid: 03597fa8fa7c0024c9c3204dd9898bcd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 439488377466807536, guid: 03597fa8fa7c0024c9c3204dd9898bcd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 439488377466807536, guid: 03597fa8fa7c0024c9c3204dd9898bcd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 439488377466807536, guid: 03597fa8fa7c0024c9c3204dd9898bcd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 439488377466807536, guid: 03597fa8fa7c0024c9c3204dd9898bcd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 439488377466807536, guid: 03597fa8fa7c0024c9c3204dd9898bcd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 960024238362869322, guid: 03597fa8fa7c0024c9c3204dd9898bcd, type: 3}
+      propertyPath: m_Name
+      value: KillerStreetRat Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 960024238362869322, guid: 03597fa8fa7c0024c9c3204dd9898bcd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2124087543955147014}
+  m_SourcePrefab: {fileID: 100100000, guid: 03597fa8fa7c0024c9c3204dd9898bcd, type: 3}
+--- !u!1 &4597144960083615568 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 960024238362869322, guid: 03597fa8fa7c0024c9c3204dd9898bcd, type: 3}
+  m_PrefabInstance: {fileID: 3647605675915272474}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-2124087543955147014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4597144960083615568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9596a877a2ef5a942ac7845a6da80f49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goalPosition: {x: 0, y: 0, z: 0}
