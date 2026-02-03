@@ -1,69 +1,73 @@
 using UnityEngine;
 
-public class DynamicLemonScript : MonoBehaviour
+public class SideToSidePlatform : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [Tooltip("How fast the platform moves back and forth.")]
     public float speed = 2.0f;
-
-    [Tooltip("How far the platform moves from its starting point.")]
     public float distance = 3.0f;
 
     [Header("Direction Controls")]
-    [Tooltip("Check this to move Up/Down (Y Axis). This overrides the settings below.")]
     public bool moveVertical = false;
-
-    [Tooltip("If Vertical is unchecked: Check this to move Forward/Back (Z Axis). Uncheck for Left/Right (X Axis).")]
     public bool useZAxis = false;
 
     private Vector3 startPosition;
+    private Vector3 previousPosition;
+    private CharacterController playerController;
 
     void Start()
     {
         startPosition = transform.position;
+        previousPosition = transform.position;
     }
 
     void Update()
     {
+        MovePlatform();
+    }
+
+    // LateUpdate runs after all Update functions, ensuring the platform 
+    // has finished moving before we move the player.
+    void LateUpdate()
+    {
+        if (playerController != null)
+        {
+            // 1. Calculate how much the platform moved this frame
+            Vector3 platformDelta = transform.position - previousPosition;
+
+            // 2. Manually nudge the player by that same amount
+            playerController.Move(platformDelta);
+        }
+
+        // Record position for the next frame's calculation
+        previousPosition = transform.position;
+    }
+
+    void MovePlatform()
+    {
         float movementOffset = Mathf.Sin(Time.time * speed) * distance;
         Vector3 newPosition = startPosition;
 
-        // Logic to determine which axis to apply the movement to
-        if (moveVertical)
-        {
-            // Move Up/Down (Y)
-            newPosition.y += movementOffset;
-        }
-        else if (useZAxis)
-        {
-            // Move Forward/Back (Z)
-            newPosition.z += movementOffset;
-        }
-        else
-        {
-            // Move Left/Right (X) - Default
-            newPosition.x += movementOffset;
-        }
+        if (moveVertical) newPosition.y += movementOffset;
+        else if (useZAxis) newPosition.z += movementOffset;
+        else newPosition.x += movementOffset;
 
         transform.position = newPosition;
     }
 
-    // --- Player stickiness logic included for convenience ---
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("Player Collided");
-            collision.transform.SetParent(transform);
+            // Grab the CharacterController reference
+            playerController = other.GetComponent<CharacterController>();
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("Player Exited Collider");
-            collision.transform.SetParent(null);
+            playerController = null;
         }
     }
 }
