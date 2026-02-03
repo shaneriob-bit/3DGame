@@ -2,44 +2,68 @@ using UnityEngine;
 
 public class DynamicLemonScript : MonoBehaviour
 {
-    Vector3 startPosition;
-    [SerializeField] Vector3 endPosition;
-    Vector3 finalPosition;
+    [Header("Movement Settings")]
+    [Tooltip("How fast the platform moves back and forth.")]
+    public float speed = 2.0f;
 
-    bool toEnd = true; 
+    [Tooltip("How far the platform moves from its starting point.")]
+    public float distance = 3.0f;
 
-    public float moveSpeed = 10.0f;
+    [Header("Direction Controls")]
+    [Tooltip("Check this to move Up/Down (Y Axis). This overrides the settings below.")]
+    public bool moveVertical = false;
 
-    private void Start()
+    [Tooltip("If Vertical is unchecked: Check this to move Forward/Back (Z Axis). Uncheck for Left/Right (X Axis).")]
+    public bool useZAxis = false;
+
+    private Vector3 startPosition;
+
+    void Start()
     {
         startPosition = transform.position;
-        finalPosition = startPosition + endPosition;
     }
 
-    private void FixedUpdate()
+    void Update()
     {
-        if (toEnd)
+        float movementOffset = Mathf.Sin(Time.time * speed) * distance;
+        Vector3 newPosition = startPosition;
+
+        // Logic to determine which axis to apply the movement to
+        if (moveVertical)
         {
-            transform.position =  Vector3.Lerp(transform.position, finalPosition, moveSpeed);
+            // Move Up/Down (Y)
+            newPosition.y += movementOffset;
+        }
+        else if (useZAxis)
+        {
+            // Move Forward/Back (Z)
+            newPosition.z += movementOffset;
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, startPosition, moveSpeed);
+            // Move Left/Right (X) - Default
+            newPosition.x += movementOffset;
         }
 
-        if (toEnd)
+        transform.position = newPosition;
+    }
+
+    // --- Player stickiness logic included for convenience ---
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
-            if (Vector3.Distance(transform.position, finalPosition) < 1)
-            {
-                toEnd = !toEnd;
-            }
+            Debug.Log("Player Collided");
+            collision.transform.SetParent(transform);
         }
-        else
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
-            if (Vector3.Distance(transform.position, startPosition) < 1)
-            {
-                toEnd = !toEnd;
-            }
+            Debug.Log("Player Exited Collider");
+            collision.transform.SetParent(null);
         }
     }
 }
