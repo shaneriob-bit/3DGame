@@ -1,5 +1,10 @@
+Description:
+The heavens of Lemons is a part platformer, part lemon dodging, and part (very very difficult) puzzle experience. Featuring a title screen, immersive falling lemon slope of doom, and a death screen that sends you straight back to the title!
+
+Changes to player:
 I reduced the jump height of the player to 1.75 as the previous jump height of 2 felt like too much. Lowering it made it so that you feel more in control of the character when you jump. I also increased the player's movement speed from 5 to 7.5, allowing the player to reach further when jumping and feel more in control
 
+Screenshots:
 <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/876d15e5-2d7d-4bfb-93d2-ba4f6722279a" />
 <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/df17ac49-16a6-4dec-9c6a-95e2b7761079" />
 <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/6ae398d3-19f3-4560-a280-2f3ee6076f8e" />
