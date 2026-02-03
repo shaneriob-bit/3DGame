@@ -4,6 +4,7 @@ I reduced the jump height of the player to 1.75 as the previous jump height of 2
 <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/df17ac49-16a6-4dec-9c6a-95e2b7761079" />
 <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/6ae398d3-19f3-4560-a280-2f3ee6076f8e" />
 <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/bef11146-c61e-4146-a5b8-731683f1fd1d" />
+<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/f26d0270-a772-4fd5-b219-05368eac0c82" />
 
 
 
