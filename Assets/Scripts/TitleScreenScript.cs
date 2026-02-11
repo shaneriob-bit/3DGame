@@ -8,6 +8,8 @@ public class TitleScreenScript : MonoBehaviour
 
     void Start()
     {
+        Application.targetFrameRate = 60;
+
         Button button = PlayButtonObject.GetComponent<Button>();
         button.onClick.AddListener(OnPlayClicked);
         Physics.gravity = new Vector3(0, -0.5f, 0);
