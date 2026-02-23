@@ -2648,6 +2648,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3636463832932492672, guid: 070095bfedf139b42979536db6a4f68e, type: 3}
+      propertyPath: m_AllowDynamicResolution
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4541204199610529371, guid: 070095bfedf139b42979536db6a4f68e, type: 3}
       propertyPath: m_Size.x
       value: 1.2
